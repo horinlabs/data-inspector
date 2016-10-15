@@ -1,0 +1,29 @@
+{
+	"name": "data-inspector",
+	"version": "0.0.1",
+	"description": "A simple library to make easy validating Objects in Javascript",
+	"main": "lib/main.js",
+	"scripts": {
+		"test": "mocha ./lib/*.spec.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/horinlabs/data-inspector.git"
+	},
+	"keywords": [
+		"schema",
+		"validator",
+		"inspector",
+		"object"
+	],
+	"author": "Danilo Oliveira",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/horinlabs/data-inspector/issues"
+	},
+	"homepage": "https://github.com/horinlabs/data-inspector#readme",
+	"devDependencies": {
+		"chai": "^3.5.0",
+		"mocha": "^3.0.2"
+	}
+}
