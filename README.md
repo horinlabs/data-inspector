@@ -39,48 +39,140 @@ Inspector.verify(data, rules, messages);
 
 ### required
 
-Test if the field is present in the object.
+The attribute `%s` is required
 
 ### type
 
-Test if the field type matches the desired value.
+The attribute `%s` must be of type %s
 
 ### pattern
 
-Test if the field value matches the pattern.
+The attribute `%s` is invalid
 
 ### exactLength
 
-Test if the field value has the desired exact length.
+The attribute `%s` must have the exact length of %d
 
 ### minLength
 
-Test if the field value has at least the desired length.
+The attribute `%s` must have a minimum length of %d
 
 ### maxLength
 
-Test if the field value has the maximum of the desired length.
+The attribute `%s` must have a maximum length of %d
 
-### lt
+### lessThan
 
-Test if the field value is less than the other value.
+The attribute `%s` must have a value less than %d
 
-### lte
+### lessOrEqualThan
 
-Test if the field is less than or equal other value.
+The attribute `%s` must have a value less than or equal %d
 
-### gt
+### greaterThan
 
-Test if the field value is greater than the desired value.
+The attribute `%s` must have a value greater than %d
 
-### gte
+### greaterOrEqualThan
 
-Test if the field value is greater than or equal the desired value.
+The attribute `%s` must have a value greater than or equal %d
 
-### eq
+### equal
 
-Test if the field value is equal the desired value.
+The attribute `%s` must have a value equal %d
 
-### ne
+### notEqual
 
-Test if the field value is not equal the desired value.
+The attribute `%s` must not have a value equal %d
+
+### accepted
+
+The attribute `%s` must be accepted
+
+### afterDate
+
+The attribute `%s` must be a date after %s
+
+### beforeDate
+
+The attribute `%s` must be a date before %s
+
+### equalDate
+
+The attribute `%s` must be a date equal %s
+
+### equalOrBeforeDate
+
+The attribute `%s` must be a date before or equal %s
+
+### equalOrAfterDate
+
+The attribute `%s` must be a date after or equal %s
+
+### betweenDates
+
+The attribute `%s` must be of the type %2[0]$s and %2[1]$s
+
+### validator
+
+The attribute `%s` must match the validator
+
+### alpha
+
+The attribute `%s` must be entirely alphabetic characters
+
+### alphaDash
+
+The attribute `%s` may have alpha-numeric characters, as well as dashes and underscores
+
+### alphaNumeric
+
+The attribute `%s` must be entirely alpha-numeric characters
+
+### email
+
+The attribute `%s` must be formatted as an email address
+
+### url
+
+The attribute `%s` must be formatted as an url
+
+### ip
+
+The attribute `%s` must be formatted as an IP address
+
+### between
+
+The attribute `%s` must have a value between %2[0]$s and %2[1]$s
+
+### betweenStrict
+
+The attribute `%s` must have a value between %2[0]$s and %2[1]$s inclusive
+
+### different
+
+The attribute `%s` must have a value different than %s
+
+### digits
+
+The attribute `%s` must have a value a number the length of %d
+
+### distinct
+
+All the values of the attribute `%s` must be different
+
+### in
+
+The attribute `%s` must be included in %s
+
+### notIn
+
+The attribute `%s` must not be included in %s
+
+### requiredWith
+
+The attribute `%s` must be present only if at least one of %s are present
+
+### requiredWithout
+
+The attribute `%s` must be present only if at least one of %s are not present
