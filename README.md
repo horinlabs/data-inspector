@@ -173,7 +173,7 @@ The attribute must be present only if at least one of the attributes in array ar
 
 The attribute must be present only if at least one of attributes in array are not present
 
-* For a solid example of each validator, please have a look at lib/data-inspector.spec.js
+*Note:* For a solid example of each validator, please have a look at lib/data-inspector.spec.js
 
 ## Custom rules
 
