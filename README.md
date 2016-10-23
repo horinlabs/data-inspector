@@ -17,7 +17,7 @@ var data = {
 };
 
 var rules = {
-	name: { type: 'string', minLength: 5 },
+	name: { type: 'string', alpha: true, minLength: 5 },
 	description: { type: 'string', minLength: 20 },
 	type: { type: 'string', pattern: '^(fire|water|grass)$' },
 };
@@ -35,144 +35,170 @@ Inspector.verify(data, rules, messages);
 ```
 
 * * *
-## Validation types
+## Built-in validation types
 
 ### required
 
-The attribute `%s` is required
+The attribute is required
 
 ### type
 
-The attribute `%s` must be of type %s
+The attribute must be of a given type. Accepted values are `string`, `array`, `number` or `boolean`.
 
 ### pattern
 
-The attribute `%s` is invalid
+The attribute must match a given regex.
 
 ### exactLength
 
-The attribute `%s` must have the exact length of %d
+The attribute must have the exact given length.
 
 ### minLength
 
-The attribute `%s` must have a minimum length of %d
+The attribute must have a minimum given length.
 
 ### maxLength
 
-The attribute `%s` must have a maximum length of %d
+The attribute must have a maximum given length.
 
 ### lessThan
 
-The attribute `%s` must have a value less than %d
+The attribute must have a value less than the rule.
 
 ### lessOrEqualThan
 
-The attribute `%s` must have a value less than or equal %d
+The attribute must have a value less than or equal than the rule.
 
 ### greaterThan
 
-The attribute `%s` must have a value greater than %d
+The attribute must have a value greater than the rule.
 
 ### greaterOrEqualThan
 
-The attribute `%s` must have a value greater than or equal %d
+The attribute must have a value greater than or equal than the rule.
 
 ### equal
 
-The attribute `%s` must have a value equal %d
+The attribute must have a value equal the rule.
 
 ### notEqual
 
-The attribute `%s` must not have a value equal %d
+The attribute must not have a value equal the rule.
 
 ### accepted
 
-The attribute `%s` must be accepted
+The attribute must be 'yes', 'on', 1 or true.
 
 ### afterDate
 
-The attribute `%s` must be a date after %s
+The attribute must be a valid date after the one passed on the rule.
 
 ### beforeDate
 
-The attribute `%s` must be a date before %s
+The attribute must be a valid date before the one passed on the rule.
 
 ### equalDate
 
-The attribute `%s` must be a date equal %s
+The attribute must be a valid date equal the one passed one the rule.
 
 ### equalOrBeforeDate
 
-The attribute `%s` must be a date before or equal %s
+The attribute must be a date before or equal the one passed one the rule.
 
 ### equalOrAfterDate
 
-The attribute `%s` must be a date after or equal %s
+The attribute must be a date after or equal the one passed one the rule.
 
 ### betweenDates
 
-The attribute `%s` must be of the type %2[0]$s and %2[1]$s
-
-### validator
-
-The attribute `%s` must match the validator
+The attribute must be a date between two dates. Accepted rule value is an array which the first value is the initialDate and the second is the finalDate.
 
 ### alpha
 
-The attribute `%s` must be entirely alphabetic characters
+The attribute must be entirely alphabetic characters.
 
 ### alphaDash
 
-The attribute `%s` may have alpha-numeric characters, as well as dashes and underscores
+The attribute may have alpha-numeric characters, as well as dashes and underscores.
 
 ### alphaNumeric
 
-The attribute `%s` must be entirely alpha-numeric characters
+The attribute must be entirely alpha-numeric characters.
 
 ### email
 
-The attribute `%s` must be formatted as an email address
+The attribute must be formatted as an email address.
 
 ### url
 
-The attribute `%s` must be formatted as an url
+The attribute must be formatted as an url.
 
 ### ip
 
-The attribute `%s` must be formatted as an IP address
+The attribute must be formatted as an IP address.
 
 ### between
 
-The attribute `%s` must have a value between %2[0]$s and %2[1]$s
+The attribute must have a value between two values. Accepted rule value is an array which the first value is the initialValue and the second is the finalValue.
 
 ### betweenStrict
 
-The attribute `%s` must have a value between %2[0]$s and %2[1]$s inclusive
+The same of above rule, but using strict validation.
 
 ### different
 
-The attribute `%s` must have a value different than %s
+The attribute must have a value different than the one passed for the rule.
 
 ### digits
 
-The attribute `%s` must have a value a number the length of %d
+The attribute must be a number and has a value where its digits matches the value on the rule.
 
 ### distinct
 
-All the values of the attribute `%s` must be different
+The attribute must be an array and all its values must be different.
 
 ### in
 
-The attribute `%s` must be included in %s
+The attribute must be included in the given array.
 
 ### notIn
 
-The attribute `%s` must not be included in %s
+The attribute must not be included in thee given array.
 
 ### requiredWith
 
-The attribute `%s` must be present only if at least one of %s are present
+The attribute must be present only if at least one of the attributes in array are present.
 
 ### requiredWithout
 
-The attribute `%s` must be present only if at least one of %s are not present
+The attribute must be present only if at least one of attributes in array are not present
+
+* For a solid example of each validator, please have a look at lib/data-inspector.spec.js
+
+## Custom rules
+
+Ok, we have a bunch of validators, but let's suppose you want a very specific rule. You totally can! Here's how:
+
+```
+var data = {
+	name: 'Pikachu',
+	type: 'eletric',
+	description: 'Useless Pokemon.'
+};
+
+var rules = {
+	type: {
+		theBest: function(schema, field, value){
+			return value === 'water' && value !== 'eletric';
+		}
+	}
+};
+
+var messages = {
+	type: {
+		theBest: 'The Pokémon must be of type water, not eletric.'
+	}
+};
+
+Inspector.verify(data, rules, messages) //[{field: 'type', message: 'The Pokémon must be of type water, not eletric.'}]
+```
