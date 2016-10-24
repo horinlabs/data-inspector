@@ -145,10 +145,6 @@ The attribute must have a value between two values. Accepted rule value is an ar
 
 The same of above rule, but using strict validation.
 
-### different
-
-The attribute must have a value different than the one passed for the rule.
-
 ### digits
 
 The attribute must be a number and has a value where its digits matches the value on the rule.
@@ -172,6 +168,10 @@ The attribute must be present only if at least one of the attributes in array ar
 ### requiredWithout
 
 The attribute must be present only if at least one of attributes in array are not present
+
+### requiredIf
+
+The attribute must be present only if the function passed in `requiredIf` returns `true`
 
 *Note:* For a solid example of each validator, please have a look at lib/data-inspector.spec.js
 
