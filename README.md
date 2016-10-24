@@ -19,7 +19,7 @@ var data = {
 var rules = {
 	name: { type: 'string', alpha: true, minLength: 5 },
 	description: { type: 'string', minLength: 20 },
-	type: { type: 'string', pattern: '^(fire|water|grass)$' },
+	type: { type: 'string', pattern: /^(fire|water|grass)$/ },
 };
 
 var messages = {
