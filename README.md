@@ -1,4 +1,4 @@
-# Data Inspector
+# Data Inspector [![NPM version](https://img.shields.io/npm/v/data-inspector.svg?style=flat)](https://www.npmjs.com/package/data-inspector) [![NPM downloads](https://img.shields.io/npm/dm/data-inspector.svg?style=flat)](https://npmjs.org/package/data-inspector) [![Build Status](https://img.shields.io/travis/horinlabs/data-inspector.svg?style=flat)](https://travis-ci.org/horinlabs/data-inspector)
 
 A simple library to make easy validating Objects in Javascript.
 
@@ -13,13 +13,19 @@ var Inspector = require('data-inspector');
 var data = {
 	name: 'Squirtle',
 	description: 'A small Pokémon.',
-	type: 'water'
+	type: 'water',
+	another: {
+		nested: {
+			field: 'should be a number'
+		}
+	}
 };
 
 var rules = {
 	name: { type: 'string', alpha: true, minLength: 5 },
 	description: { type: 'string', minLength: 20 },
 	type: { type: 'string', pattern: /^(fire|water|grass)$/ },
+	'another.nested.field': { type: 'number' }
 };
 
 var messages = {

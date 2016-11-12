@@ -4,7 +4,8 @@
   "description": "A simple library to make easy validating Objects in Javascript",
   "main": "lib/main.js",
   "scripts": {
-    "test": "mocha ./lib/*.spec.js"
+    "test": "mocha ./lib/*.spec.js",
+    "lint": "./node_modules/.bin/eslint ./lib/*.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,11 @@
   "homepage": "https://github.com/horinlabs/data-inspector#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.10.0",
     "mocha": "^3.0.2"
   },
   "dependencies": {
+    "get-value": "^2.0.6",
     "moment": "^2.15.1"
   }
 }
