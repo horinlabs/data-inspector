@@ -213,4 +213,3 @@ var messages = {
 Inspector.verify(data, rules, messages) //[{field: 'type', message: 'The Pokémon must be of type water, not eletric.'}]
 ```
 *Note:* if you add a custom rule that already exists in the validators above, the default one will be used.
->>>>>>> 347867e5cad7c93a851fbafd8bdfd7bd9599444c
