@@ -37,7 +37,11 @@ var messages = {
 
 Inspector.verify(data, rules, messages);
 
-//outputs: [{field: 'description', message: 'The Pokémon description must have at least length of 20.'}]
+///outputs:
+//[
+//	{field: 'description', message: 'The Pokémon description must have at least length of 20.'},
+//	{field: 'another.nested.field', message: 'The attribute `another.nested.field` must be of type number'}
+//]
 ```
 
 * * *
@@ -208,3 +212,5 @@ var messages = {
 
 Inspector.verify(data, rules, messages) //[{field: 'type', message: 'The Pokémon must be of type water, not eletric.'}]
 ```
+*Note:* if you add a custom rule that already exists in the validators above, the default one will be used.
+>>>>>>> 347867e5cad7c93a851fbafd8bdfd7bd9599444c
