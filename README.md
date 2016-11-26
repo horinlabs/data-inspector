@@ -213,3 +213,42 @@ var messages = {
 Inspector.verify(data, rules, messages) //[{field: 'type', message: 'The Pokémon must be of type water, not eletric.'}]
 ```
 *Note:* if you add a custom rule that already exists in the validators above, the default one will be used.
+
+## Minimal mode
+
+Default validation returns an array of object with invalid fields. But, let's say you need just a plan object with the first error of each attribute. You can use `{minimal: true}` as the forth parameter of `verify` method.
+
+```
+var data = {
+	id: 'Something',
+	name: 'Squirtle',
+	type: 'water',
+	another: {
+		nested: {
+			field: 'should be a number'
+		}
+	}
+};
+
+var rules = {
+	name: { type: 'string', alpha: true, minLength: 5 },
+	id: { type: 'number', lessThan: 151 },
+	type: { type: 'string', pattern: /^(fire|water|grass)$/ },
+	'another.nested.field': { type: 'number' }
+};
+
+var messages = {
+	id: {
+		type: 'The Pokémon id must be a number.',
+		equal: 'The Pokémon id must be less than 151.'
+	}
+};
+
+Inspector.verify(data, rules, messages, { minimal: true })
+// returns:
+//
+//{
+//	'id': 'The Pokémon id must be a number.',
+//	'another.nested.field': 'The attribute `another.nested.field` must be of type number'
+//}
+```
