@@ -7,7 +7,7 @@ How to install:
 
 ### Example
 
-```
+```js
 var Inspector = require('data-inspector');
 
 var data = {
@@ -189,7 +189,7 @@ The attribute must be present only if the function passed in `requiredIf` return
 
 Ok, we have a bunch of validators, but let's suppose you want a very specific rule. You totally can! Here's how:
 
-```
+```js
 var data = {
 	name: 'Pikachu',
 	type: 'eletric',
@@ -218,7 +218,7 @@ Inspector.verify(data, rules, messages) //[{field: 'type', message: 'The Pokémo
 
 Default validation returns an array of object with invalid fields. But, let's say you need just a plan object with the first error of each attribute. You can use `{minimal: true}` as the forth parameter of `verify` method.
 
-```
+```js
 var data = {
 	id: 'Something',
 	name: 'Squirtle',
